@@ -2,14 +2,16 @@
 export default {
   data() {
     return {
-      name: '철수',
-      age: 19,
+     message: '<h1>Hello, Vue JS!</h1>',
+     name: '철수',
+     age: 19,
     };
   },
 };
 </script>
 <template>
-  <p>저의 이름은 {{ name }} 입니다.</p>
-  <p>저는 {{ age }}살 입니다.</p>
+  콧수염 문법 : <h1>{{ message }}</h1>
+  v-html디렉티브 : <div v-html="message"></div>
+  v-text 디렉티브 : <h1 v-text="message"></h1>
 </template>
 <style></style>
