@@ -10,8 +10,6 @@ export default {
 };
 </script>
 <template>
-  콧수염 문법 : <h1>{{ message }}</h1>
-  v-html디렉티브 : <div v-html="message"></div>
-  v-text 디렉티브 : <h1 v-text="message"></h1>
+ <h1 v-pre>{{ name }}</h1>
 </template>
 <style></style>
