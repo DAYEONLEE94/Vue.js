@@ -1,15 +1,21 @@
 <script>
 export default {
+  data(){
+    return {
+      number: 0
+    };
+  },
   methods: {
-    onKeyuphandler(event){
-      alert("eneter!");
-    },  
+    onClick(){
+      this.number++;
+    },    
   },
 };
 </script>
 
 <template>
-  <input @keyup.enter="onKeyuphandler"></input>
+  <h1>{{ number }}</h1>
+  <button @click="onClick">증가</button>
 </template>
 
 <style></style>
