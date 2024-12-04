@@ -1,16 +1,15 @@
 <script>
 export default {
   methods: {
-    clickHandler(event){
-      console.log(event);
+    onKeyuphandler(event){
+      alert("eneter!");
     },  
   },
 };
 </script>
 
 <template>
-  <button v-on:click="clickHandler">클릭</button>
-  <button @click="clickHandler">축약형 클릭</button>
+  <input @keyup.enter="onKeyuphandler"></input>
 </template>
 
 <style></style>
