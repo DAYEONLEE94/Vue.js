@@ -1,26 +1,27 @@
 <script>
-export default {
-  data(){
-    return {
-      number1: 0,
-      number2: 0,
-    };
-  },
-  methods: {
-    onClick1(){
-      this.number1++;
+  export default{
+    data(){
+      return{
+        message: '',
+      };
     },
-    onClick2(){
-      this.number2++;
-    },    
-  },
-};
+    methods: {
+      printData() {
+        console.log(this.message);      
+      }
+      
+    },
+  }
+
+
 </script>
 
 <template>
-  <h1 v-memo="[number1, number2]">{{ number1 }} / {{number2}}</h1>
-  <button @click="onClick1">증가</button>
-  <button @click="onClick2">증가</button>
+  <form id="loginCheck">
+   <textarea v-model="message"></textarea>
+    <button type="button" @click="printData">데이터출력</button>
+  </form>
+ 
 </template>
 
 <style></style>
