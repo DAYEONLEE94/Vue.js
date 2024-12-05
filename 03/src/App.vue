@@ -1,35 +1,29 @@
 <script>
-  export default{ 
+  export default{
     data() {
       return {
-        fruits: ['banana', 'orange'],
+        gender: 'male',
       };
     },
-
     methods: {
-      printData() {
-        console.log(this.fruits);
-      },
-    },
+      printData(){
+        console.log(this.gender);
+      }
+    }
+    
   }
-
-
 </script>
 
 <template>
   <form id="loginForm">
-    <label for="banana">
-      <input type="checkbox" id="banana" v-model="fruits" value="banana"/>banana
+    <label for="male">
+      <input type="radio" id="male" v-model="gender" value="male"/>male
     </label>
-    <label for="orange">
-      <input type="checkbox" id="orange" v-model="fruits" value="orange"/>orange
-    </label>
-    <label for="apple">
-      <input type="checkbox" id="orange" v-model="fruits" value="apple"/>apple
+    <label for="female">
+      <input type="radio" id="female" v-model="gender" value="female"/>female
     </label>
     <button type="button" @click="printData">확인</button>
-  </form>
- 
-</template>
 
+  </form>
+</template>
 <style></style>
