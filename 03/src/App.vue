@@ -2,28 +2,26 @@
   export default{
     data() {
       return {
-        gender: 'male',
+        selectItem: 'americano',
       };
     },
     methods: {
-      printData(){
-        console.log(this.gender);
+      printData() {
+        console.log(this.selectItem);
       }
+      
     }
-    
   }
 </script>
 
 <template>
   <form id="loginForm">
-    <label for="male">
-      <input type="radio" id="male" v-model="gender" value="male"/>male
-    </label>
-    <label for="female">
-      <input type="radio" id="female" v-model="gender" value="female"/>female
-    </label>
+    <select v-model="selectItem">
+      <option value="americano">아메리카노</option>
+      <option value="cafeLatte">카페라테</option>
+      <option value="espresso">에스프레소</option>
+    </select>
     <button type="button" @click="printData">확인</button>
-
   </form>
 </template>
 <style></style>
