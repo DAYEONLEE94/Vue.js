@@ -1,21 +1,23 @@
 <script>
   export default{
+    data() {
+      return {
+        firstName: 'Gildong',
+        lastName: 'Hong',
+      };
+    },
 
-    methods: {
-      submitHandler(event){
-        event.preventDefault();
-        console.log(this.uid, this.upw);
-        },
-      },
+    computed: {
+      fullName() {
+        console.log('fullName');
+        return `${this.lastName} ${this.firstName}`;
+        // return this.firstName + this.lastName;
+      }, 
+    },
     };
 </script>
 
 <template>
-  <form action="" @submit="submitHandler">
-    아이디 <input type="text" id="uid" v-model="uid">
-    패스워드 <input type="password" id="upw" v-model="upw">
-  <button>로그인</button>
-  </form>
-  
+ <h1>{{ fullName }}</h1> 
 </template>
 <style></style>
