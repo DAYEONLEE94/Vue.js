@@ -2,21 +2,31 @@
   export default{
     data() {
       return {
-        message: '',
+        selected: 'banana',
+        price: 500,
       };
     },
     methods: {
-      AllText(event){
-        this.message = event.target.value;
-      }
-    }
+      onChangeHandler(){
+       if(this.selected === 'banana'){
+          this.price = 500;
+       } 
+       if(this.selected === 'apple'){
+          this.price = 1000;
+       }
+      },
+    },
   }
 </script>
 
 <template>
- 
-    <input type="text" @input="AllText()">
-    {{ message }}
+  
+    <select v-model="selected" @change="onChangeHandler()">
+      <option value="banana">바나나</option>
+      <option value="apple">사과</option>
+    </select>
+    {{ price }}
+
 
 </template>
 <style></style>
