@@ -1,23 +1,21 @@
 <script>
   export default{
-    data() {
-      return {
-        firstName: 'Gildong',
-        lastName: 'Hong',
+    data(){
+      return { 
+        inputStr: '',
       };
     },
-
-    computed: {
-      fullName() {
-        console.log('fullName');
-        return `${this.lastName} ${this.firstName}`;
-        // return this.firstName + this.lastName;
-      }, 
-    },
-    };
+    watch: {
+      inputStr(newValue, oldValue) {
+        console.log(`oldValue : ${oldValue}`);
+        console.log(`newValue : ${newValue}`);
+      }
+    }
+  }
+   
 </script>
 
 <template>
- <h1>{{ fullName }}</h1> 
+  <input type="text" v-model="inputStr">
 </template>
 <style></style>
