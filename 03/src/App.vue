@@ -1,32 +1,21 @@
 <script>
   export default{
-    data() {
-      return {
-        selected: 'banana',
-        price: 500,
-      };
-    },
+
     methods: {
-      onChangeHandler(){
-       if(this.selected === 'banana'){
-          this.price = 500;
-       } 
-       if(this.selected === 'apple'){
-          this.price = 1000;
-       }
+      submitHandler(event){
+        event.preventDefault();
+        console.log(this.uid, this.upw);
+        },
       },
-    },
-  }
+    };
 </script>
 
 <template>
+  <form action="" @submit="submitHandler">
+    아이디 <input type="text" id="uid" v-model="uid">
+    패스워드 <input type="password" id="upw" v-model="upw">
+  <button>로그인</button>
+  </form>
   
-    <select v-model="selected" @change="onChangeHandler()">
-      <option value="banana">바나나</option>
-      <option value="apple">사과</option>
-    </select>
-    {{ price }}
-
-
 </template>
 <style></style>
