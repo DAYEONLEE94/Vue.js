@@ -11,6 +11,11 @@
 </script>
 
 <template>
-  <h1 v-bind:style="{color: color, fontStyle: style}">Sample Text</h1>
+  <h1>Sample Text</h1>
 </template>
-<style></style>
+<style>
+h1 {
+  color: red;
+  font-style: italic;
+}
+</style>
