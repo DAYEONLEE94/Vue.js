@@ -2,20 +2,34 @@
   export default{
     data(){
       return { 
-        inputStr: '',
+        arr: [0,1,2],
+        obj: {name: 'chulsu'},
       };
     },
     watch: {
-      inputStr(newValue, oldValue) {
-        console.log(`oldValue : ${oldValue}`);
-        console.log(`newValue : ${newValue}`);
-      }
-    }
+      arr: {
+        handler(newValue, oldValue){
+          console.log(`old value : ${oldValue}`);
+          console.log(`new Value : ${newValue}`);
+        },
+        deep: true
+      },
+
+      obj: {
+        handler(newValue, oldValue){
+          console.log(`old value : ${JSON.stringify(oldValue)}`);
+          console.log(`new value : ${JSON.stringify(newValue)}`);
+        },
+        deep: true,
+      },
+    },
   }
-   
 </script>
 
 <template>
-  <input type="text" v-model="inputStr">
+  <h1>{{arr}}</h1>
+  <h1>{{ obj }}</h1>
+  <button @click="arr.push(3)">배열 변경</button>  
+  <button @click="obj.age = 20">객체 변경</button>
 </template>
 <style></style>
