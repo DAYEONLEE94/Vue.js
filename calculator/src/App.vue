@@ -11,6 +11,15 @@
      methods: {
       operation(e){
         const n = e.currentTarget.value;
+
+        if(n === "C"){
+          this.output = null;
+          this.cur = null;
+          this.prev = null;
+          this.operator =null;
+          return; 
+        }
+
         if(['+','-','*','/','='].includes(n)){
           if(!this.cur && !this.prev) {
             alert("숫자를 먼저 입력하세요.");
