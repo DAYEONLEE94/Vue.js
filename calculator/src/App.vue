@@ -2,23 +2,82 @@
   export default {
      data() {
       return {
-        output : null,
-        prev : null,
-        cur : null,
-        operator : null,
+        output : null, //출력된 값
+        prev : null, //이전에 입력된 값 또는 연산 결과가 저장된 값
+        cur : null, //현재 입력된 값 
+        operator : null, //연산자를 저장하는 값 
       }
      },
      methods: {
       operation(e){
         const n = e.currentTarget.value;
+        if(['+','-','*','/','='].includes(n)){
+          
+          this.cur = Number(this.cur);
+          
+          if(this.operator !== null){
+            switch (this.operator) {
+              case '+': 
+                this.prev = this.prev + this.cur;
+                break;
+              case '-': 
+               this.prev = this.prev - this.cur;
+               break;
+              case '*': 
+               this.prev = this.prev * this.cur;
+               break; 
+              case '/': 
+               this.prev = this.prev / this.cur;
+               break;
+            }
+            if(n === "="){
+              this.output = this.prev;
+              this.operator = null;
+              this.cur = this.prev;
+            }else {
+              this.operator = n;
+              this.output = null;
+              this.cur = null;
+            }
+          }else { 
+            this.output = null;
+            this.operator = n;
+            this.prev = this.cur;
+            this.cur = null;
+            }
+            return;
+        }
         this.cur = this.cur === null ? n : (this.cur + n);
         this.output = this.cur;
-      }
-     }
+      },
+     },
   }
 </script>
 
 <template>
+  <table border>
+    <tr>
+      <th>데이터</th>
+      <th>값</th>
+    </tr>
+    <tr>
+      <td>output</td>
+      <td>{{ output }}</td>
+    </tr>
+    <tr>
+      <td>prev</td>
+      <td>{{ prev }}</td>
+    </tr>
+    <tr>
+      <td>cur</td>
+      <td>{{ cur }}</td>
+    </tr>
+    <tr>
+      <td>operator</td>
+      <td>{{ operator }}</td>
+    </tr>
+    
+  </table>
   <div class="calculator">
     <form name="forms">
       <input v-model="output" type="text" name="output" readonly />
