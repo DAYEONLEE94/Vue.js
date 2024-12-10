@@ -12,7 +12,19 @@
       operation(e){
         const n = e.currentTarget.value;
         if(['+','-','*','/','='].includes(n)){
-          
+          if(!this.cur && !this.prev) {
+            alert("숫자를 먼저 입력하세요.");
+            return
+          }
+
+          if(this.operator !== null && !this.cur){
+            alert("연산기호를 연달아 누를 수 없습니다.");
+          } 
+
+          if(n === "=" && this.prev === this.cur) {
+            return;
+          }
+
           this.cur = Number(this.cur);
           
           if(this.operator !== null){
