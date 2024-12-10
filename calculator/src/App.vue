@@ -11,7 +11,8 @@
      methods: {
       operation(e){
         const n = e.currentTarget.value;
-        
+        this.cur = this.cur === null ? n : (this.cur + n);
+        this.output = this.cur;
       }
      }
   }
