@@ -1,57 +1,43 @@
 <script>
   export default {
-     data() {
-      return {
-        output : null, //출력된 값
-        prev : null, //이전에 입력된 값 또는 연산 결과가 저장된 값
-        cur : null, //현재 입력된 값 
-        operator : null, //연산자를 저장하는 값 
-      }
-     },
-     methods: {
-      operation(e){
-        const n = e.currentTarget.value;
+    data() {
+      return { 
+        cur : null,
+        prev : null,
+        operator : null,
+        output : null,
 
-        if(n === "C"){
-          this.output = null;
-          this.cur = null;
-          this.prev = null;
-          this.operator =null;
-          return; 
+        operatorActions: { 
+          '+': (a,b) => a+b,
+          '-': (a,b) => a-b,
+          '*': (a,b) => a*b,
+          '/': (a,b) => a/b,
+        },
+      };
+    },
+    methods: {
+      clear() {
+        this.output = null;
+        this.prev = null;
+        this.cur = null;
+        this.operator = null;
+      },
+      calculate(n) {
+        if(!this.cur && !this.prev) {
+          alert("숫자 먼저 입력해주세요.");
+          return;
         }
-
-        if(['+','-','*','/','='].includes(n)){
-          if(!this.cur && !this.prev) {
-            alert("숫자를 먼저 입력하세요.");
-            return
-          }
-
-          if(this.operator !== null && !this.cur){
-            alert("연산기호를 연달아 누를 수 없습니다.");
-          } 
-
-          if(n === "=" && this.prev === this.cur) {
-            return;
-          }
-
-          this.cur = Number(this.cur);
-          
-          if(this.operator !== null){
-            switch (this.operator) {
-              case '+': 
-                this.prev = this.prev + this.cur;
-                break;
-              case '-': 
-               this.prev = this.prev - this.cur;
-               break;
-              case '*': 
-               this.prev = this.prev * this.cur;
-               break; 
-              case '/': 
-               this.prev = this.prev / this.cur;
-               break;
-            }
-            if(n === "="){
+        if(this.operator !== '' && !this.cur){
+          alert("연산 기호를 연속해서 누를 수 없습니다.");
+          return;
+        }
+        if(n === '=' && this.prev === this.cur) {
+          return;
+        }
+        this.cur = Number(this.cur);
+        if(this.operator !== null) {
+          this.prev = this.operatorActions[this.operator](this.prev, this.cur);
+        if(n === "="){
               this.output = this.prev;
               this.operator = null;
               this.cur = this.prev;
@@ -60,20 +46,31 @@
               this.output = null;
               this.cur = null;
             }
-          }else { 
-            this.output = null;
-            this.operator = n;
-            this.prev = this.cur;
-            this.cur = null;
-            }
-            return;
-        }
-        this.cur = this.cur === null ? n : (this.cur + n);
+      }else {
+        this.output = null;
+        this.operator = n;
+        this.prev = this.cur;
+        this.cur = null;
+      }
+    },
+      userInput(n) {
+        this.cur = this.cur === null ? n : (this.cur += n);
         this.output = this.cur;
+      },
+      operation(e){
+        const n = e.currentTarget.value;
+        if (n === "C") {
+          this.clear();
+        }else if (['+', '-', '*', '/', '='].includes(n)) {
+          this.calculate(n);
+        }else {
+          this.userInput(n);
+        }
       },
      },
   }
 </script>
+
 
 <template>
   <table border>
@@ -101,7 +98,7 @@
   </table>
   <div class="calculator">
     <form name="forms">
-      <input v-model="output" type="text" name="output" readonly />
+      <input v-model="output" type="text" name="output" readonly>   
       <input type="button" class="clear" value="C" @click="operation" />
       <input type="button" class="operator" value="/" @click="operation" />
       <input type="button" value="1" @click="operation" />
@@ -150,6 +147,7 @@ body {
   grid-auto-rows: 65px;
   grid-gap: 5px;
 }
+
 
 .calculator form input {
   border: 2px solid #333;
