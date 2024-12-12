@@ -1,49 +1,29 @@
 <script>
   import SecondComponent from '@/components/SecondChild.vue';
   export default {
-
     data() {
       return {
-        number: 0,
+        inputStr: "",
+        inputEl: null,
       };
     },
-    beforeCreate() {
-      console.log('beforeCreate');
-    },
-    created() {
-      console.log('created');
-    },
-    beforeMount() {
-      console.log('boforeMount');
-    },
-    mounted() {
-      console.log('mounted');
-    },
-    beforeUpdate() {
-      console.log('beforeUpdate');
-    },
-    updated() {
-      console.log('update');
-    },
-    beforeUnmount() {
-      console.log('beforeUnmount');
-    },
-    unmounted() {
-      console.log('unmounted');
-    },  
-
     methods: {
-      increment() {
-        this.number++;
+      onclickHandler() {
+        if(this.inputStr.trim() === "") {
+          alert("입력값이 비어있습니다.")
+          this.$refs.inputEl.focus();
+          return;
+        }
       }
     }
   };
 </script>
 
 <template>
-  <h1>count : {{ number }}</h1>
-  <FirstChild v-if="number % 2 === 0" />
-  <button @click="increment">증가</button>
+  <form action="">
+    <input type="text"  v-model="inputStr" ref="inputEl" />
+    <button type="button" @click="onclickHandler">등록</button>
+  </form>
   
 </template>
 
