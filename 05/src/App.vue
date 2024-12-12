@@ -1,19 +1,17 @@
 <script>
   import SecondComponent from '@/components/SecondChild.vue';
+import FirstChild from './components/FirstChild.vue';
   export default {
     data() {
       return {
         inputStr: "",
         inputEl: null,
+        componentEl: null,
       };
     },
     methods: {
       onclickHandler() {
-        if(this.inputStr.trim() === "") {
-          alert("입력값이 비어있습니다.")
-          this.$refs.inputEl.focus();
-          return;
-        }
+        console.log(this.$refs.componentEl.name)
       }
     }
   };
@@ -25,6 +23,7 @@
     <button type="button" @click="onclickHandler">등록</button>
   </form>
   
+  <FirstChild ref="componentEl"/>
 </template>
 
 <style></style>

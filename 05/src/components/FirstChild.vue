@@ -1,6 +1,11 @@
 <script>
   import SecondComponent from '@/components/SecondChild.vue';
   export default {
+    data() {
+      return {
+        name: "철수",
+      };
+    },
     beforeCreate() {
       console.log('firstChild beforeCreate');
     },
