@@ -1,7 +1,15 @@
-<script></script>
+<script>
+  import SecondComponent from '@/components/SecondChild.vue';
+  export default {
+    components: {
+      SecondComponent,
+    },
+  };
+</script>
 
 <template>
-  <FirstChild />
+  <h1>App</h1>
+  <SecondComponent />
 </template>
 
 <style></style>

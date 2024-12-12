@@ -3,7 +3,7 @@
     <p>내가 만든 첫 번째 컴포넌트</p>
 </template>
 
-<style>
+<style scoped>
 h1 {
     color: blue;
 }
