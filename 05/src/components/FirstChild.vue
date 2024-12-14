@@ -1,34 +1,25 @@
 <script>
-  import SecondComponent from '@/components/SecondChild.vue';
   export default {
     data() {
-      return {
-        name: "철수",
-      };
+        return {
+            num: 5,
+        };
     },
-    beforeCreate() {
-      console.log('firstChild beforeCreate');
+    computed: {
+        doubleNum() {
+            return this.num*2;
+        },
     },
-    created() {
-      console.log('firstChild created');
+    methods: {
+        increment() {
+            this.num++;
+        },
     },
-    beforeMount() {
-      console.log('firstChild boforeMount');
-    },
-    mounted() {
-      console.log('firstChild mounted');
-    },
-    beforeUnmount() {
-      console.log('firstChild beforeUnmount');
-    },
-    unmounted() {
-      console.log('firstChild unmounted');
-    },  
   };
 </script>
 
 <template>
- <h1>FirstChildComponent</h1>
+ <h1>{{ num }}</h1>
 
 </template>
 
