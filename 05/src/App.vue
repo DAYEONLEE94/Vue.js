@@ -1,17 +1,27 @@
-
 <script>
-import UserProfile from '@/components/UserProfile.vue';
+import FirstChild from '@/components/FirstChild.vue';
 export default {
   components: {
-    UserProfile,
+    FirstChild,
   },
-  methods: {
-    printHello() {
-      alert('안녕하세요!');
+  provide() {
+    return {
+      message: this.message,
+      reversedMessage: this.reversedMessage,
+    };
+  },
+  data() {
+    return {
+      message: 'Hello, Vue JS!',
+    };
+  },
+  computed: {
+    reversedMessage() {
+      return this.message.split('').reverse().join('');
     },
   },
 };
 </script>
 <template>
-  <UserProfile @print-hello="printHello" />
+  <FirstChild />
 </template>
