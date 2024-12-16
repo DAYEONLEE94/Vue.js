@@ -4,20 +4,19 @@ export default {
   components: {
     FirstChild,
   },
-  provide() {
-    return {
-      message: this.message,
-      reversedMessage: this.reversedMessage,
-    };
-  },
   data() {
     return {
-      message: 'Hello, Vue JS!',
+      parentNum: 5,
     };
   },
   computed: {
-    reversedMessage() {
-      return this.message.split('').reverse().join('');
+    numOddEven() {
+      return this.parentNum % 2 === 0 ? '짝수' : '홀수';
+    },
+  },
+  methods: {
+    getParentNum() {
+      return this.parentNum;
     },
   },
 };
