@@ -1,11 +1,20 @@
 <script>
-import CustomButton from '@/components/CustomButton.vue';
+import DynamicLayout from '@/components/DynamicLayout.vue';
 export default {
   components: {
-    CustomButton,
+    DynamicLayout,
+  },
+  data() {
+    return {
+      dynamicName: 'header',
+    };
   },
 };
 </script>
 <template>
-  <CustomButton />
+  <DynamicLayout>
+    <template #[dynamicName]>
+      <h2>동적 슬롯</h2>
+    </template>
+  </DynamicLayout>
 </template>
