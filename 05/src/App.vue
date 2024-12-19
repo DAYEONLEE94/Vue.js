@@ -1,13 +1,20 @@
 <script>
-import BasicScope from '@/components/BasicScope.vue';
+import BasicMix from '@/components/BasicMix.vue';
 export default {
   components: {
-    BasicScope,
+    BasicMix,
   },
 };
 </script>
 <template>
-  <BasicScope v-slot="slotProps">
-    <h1>{{ slotProps.message }} / {{ slotProps.count }}</h1>
-  </BasicScope>
+  <BasicMix>
+    <template #header="headerProps">
+      <!-- 구조 분해 아님 -->
+      <h1>{{ headerProps.message }}</h1>
+    </template>
+    <template #main="{ count }">
+      <!-- 구조 분해 -->
+      <h1>{{ count }}</h1>
+    </template>
+  </BasicMix>
 </template>
