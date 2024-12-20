@@ -1,14 +1,17 @@
 <script>
     export default {
-        props: ["name", "age"],
-        created() {
-            console.log(typeof this.age);
-        },
-    };
-    
+        methods : {
+            parentEventCall() {
+                this.$emit('print-hello');
+            }
+        }
+    }
+
 </script>
 <template>
-    <h1>UserProfile</h1>
-    <p>{{ name }} / {{ age }}</p>
-    
+    인라인 핸들러 방식
+    <p><button @click="$emit('print-hello')">클릭</button></p>
+
+    메서드 핸들러 방식
+    <p><button @click="parentEventCall">클릭</button></p>
 </template>
