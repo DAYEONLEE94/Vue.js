@@ -6,13 +6,13 @@ export default {
   },
 
 methods: {
-  printHello() { 
-    alert('안녕하세요.');
+  printHello(name, age) { 
+    alert(`안녕하세요. 저는 ${name}이고, 나이는 ${age}살 입니다.`);
   },
 },
 }
 </script>
 <template>
-  <UserProfile @print-hello="printHello"></UserProfile>  
+  <UserProfile @print-hello="(name, age) => printHello(name, age)"></UserProfile>  
 
 </template>
