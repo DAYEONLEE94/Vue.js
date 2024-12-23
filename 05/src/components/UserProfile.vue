@@ -1,16 +1,28 @@
 <script>
-  export default {
-    emits: ['print-hello'],
-
-    methods: {
-        parentEventCall() {
-            this.$emit('print-hello', '철수', 30);
-        },
+import FirstChild from '@/components/FirstChild.vue';
+import { message, reversedMessage } from '@/keys.js';
+export default {
+  components: {
+    FirstChild,
+  },
+  provide() {
+    return {
+      [message]: this.message,
+      [reversedMessage]: this.reversedMessage,
+    };
+  },
+  data() {
+    return {
+      message: 'Hello, Vue JS!',
+    };
+  },
+  computed: {
+    reversedMessage() {
+      return this.message.split('').reverse().join('');
     },
-}
-
+  },
+};
 </script>
 <template>
-    <button @click="$emit('print-hello', '철수', 30)">클릭</button>
-
+  <FirstChild />
 </template>
