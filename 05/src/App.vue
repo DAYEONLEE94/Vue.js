@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <template>
- <CustomButton>더블클릭</CustomButton>
+ <CustomButton></CustomButton>
  <MixLayout>
     <template v-slot:header>
       <header>
