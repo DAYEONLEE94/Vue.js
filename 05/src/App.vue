@@ -8,6 +8,6 @@ export default {
 }
 </script>
 <template>
- <CustomButton/>
+ <CustomButton>더블클릭</CustomButton>
 
 </template>

@@ -1,5 +1,7 @@
 <template>
-  <button class="btn">클릭</button>
+  <button class="btn">
+    <slot></slot>
+  </button>
 </template>
 <style>
 .btn{
