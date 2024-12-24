@@ -1,30 +1,13 @@
 <script>
-import FirstChild from '@/components/FirstChild.vue';
+import CustomButton from '@/components/CustomButton.vue';
 
 export default {
   components: {
-    FirstChild,
-  },
-  
-  data() {
-    return {
-      parentNum: 5,
-    };
-  },
-  computed: {
-    numOddEven() {
-      return this.parentNum % 2 === 0 ? '짝수' : '홀수';
-    },
-  },
-  methods: {
-    getParentNum() {
-      return this.parentNum;
-    },
+    CustomButton,
   },
 }
 </script>
 <template>
- <h1>App</h1>
- <FirstChild/>
+ <CustomButton/>
 
 </template>
