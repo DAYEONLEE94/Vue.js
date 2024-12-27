@@ -1,32 +1,20 @@
 <script>
-import CustomButton from '@/components/CustomButton.vue';
-import DefaultLayout from '@/components/DefaultLayout.vue';
-import MixLayout from '@/components/MixLayout.vue';
-
+import BasicMix from '@/components/BasicMix.vue';
 export default {
   components: {
-    CustomButton,
-    DefaultLayout,
-    MixLayout,
+    BasicMix,
   },
-}
+};
 </script>
 <template>
- <CustomButton></CustomButton>
- <MixLayout>
-    <template v-slot:header>
-      <header>
-        <h1>header</h1>
-      </header>
+  <BasicMix>
+    <template #header="headerProps">
+      <!-- 구조 분해 아님 -->
+      <h1>{{ headerProps.message }}</h1>
     </template>
-      <main>
-        <h1>main</h1>
-      </main>
-    <template #footer>
-      <footer>
-        <h1>footer</h1>
-      </footer>
+    <template #main="{ count }">
+      <!-- 구조 분해 -->
+      <h1>{{ count }}</h1>
     </template>
- </MixLayout>
-
+  </BasicMix>
 </template>
