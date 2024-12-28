@@ -9,7 +9,5 @@ export default {
 };
 </script>
 <template>
-  <slot name="header" :message="message"></slot>
-  <slot name="main" :count="count"></slot>
-  <slot name="footer"></slot>
+  <slot></slot>
 </template>

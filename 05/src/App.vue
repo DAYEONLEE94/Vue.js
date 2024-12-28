@@ -1,20 +1,26 @@
 <script>
-import BasicMix from '@/components/BasicMix.vue';
+import BasicScope from '@/components/BasicScope.vue';
+import BasicScope2 from '@/components/BasicScope2.vue';
 export default {
   components: {
-    BasicMix,
+    BasicScope,
+    BasicScope2,
+  },
+  data() {
+    return {
+      message: 'parent',
+      count: 0,
+    };
   },
 };
 </script>
 <template>
-  <BasicMix>
-    <template #header="headerProps">
-      <!-- 구조 분해 아님 -->
-      <h1>{{ headerProps.message }}</h1>
-    </template>
-    <template #main="{ count }">
-      <!-- 구조 분해 -->
-      <h1>{{ count }}</h1>
-    </template>
-  </BasicMix>
+  <BasicScope2>
+    <h1>범위: {{ message }} / {{ count }}</h1>
+  </BasicScope2>
 </template>
+<style scoped>
+h1 {
+  color: blue;
+}
+</style>
