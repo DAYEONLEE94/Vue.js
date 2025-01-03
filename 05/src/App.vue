@@ -1,26 +1,56 @@
 <script>
-import BasicScope from '@/components/BasicScope.vue';
-import BasicScope2 from '@/components/BasicScope2.vue';
+import ProductList from '@/components/ProductList.vue';
+import ProductDetail from '@/components/ProductDetail.vue';
 export default {
   components: {
-    BasicScope,
-    BasicScope2,
+    ProductList,
+    ProductDetail,
   },
   data() {
     return {
-      message: 'parent',
-      count: 0,
+      products: [
+        {
+          id: 1, 
+          name: '바나나', 
+          price: 1000, 
+          amount: 10, 
+        },
+        {
+          id: 2,
+          name: '오렌지',
+          price: 2000,
+          amount: 5,
+        },
+        {
+          id: 3,
+          name: '딸기',
+          price: 5000,
+          amount: 12,
+        },
+        {
+          id: 4,
+          name: '블루베리',
+          price: 3000,
+          amount: 1,
+        },
+      ],
+      selectedProductId: null,
     };
+  },
+  computed: {
+    selectProduct() {
+      return (
+        this.selectedProductId &&
+        this.products.find((v) => v.id === this.selectedProductId)
+      );
+    },
   },
 };
 </script>
 <template>
-  <BasicScope2>
-    <h1>범위: {{ message }} / {{ count }}</h1>
-  </BasicScope2>
+  <ProductList
+    :products="products"
+    @selectedProduct="(id) => (selectedProductId = Number(id))"
+  />
+  <ProductDetail v-if="selectedProductId" :selectProduct="selectProduct" />
 </template>
-<style scoped>
-h1 {
-  color: blue;
-}
-</style>
