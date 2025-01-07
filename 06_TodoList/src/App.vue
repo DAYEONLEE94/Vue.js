@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       todo: [],
+      current: "all", 
     };
   },
   components: {
@@ -22,7 +23,11 @@ export default {
     };
     this.todo.push(item);
   },
-  }
+
+  updateTab(tab) {
+    this.current = tab;
+  },
+ },
 };
 
 </script>
@@ -30,7 +35,7 @@ export default {
 <template>
    <div class="todo">
     {{ JSON.stringify(todo, null, 2) }}
-      <TodoHeader />
+      <TodoHeader :current @update-tab="updateTab" />
       <TodoList />
       <TodoInput @add-todo="addTodo" />     
     </div>
